@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>bootstrap对话框</title>
+    <link rel="stylesheet" href="../common/plugin/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/plugin/bootstrap-dialog/css/bootstrap-dialog.min.css">
+    <style type="text/css">
+    </style>
+</head>
+<body>
+<button class="btn btn-default" id="modal1">打开模态对话框</button>
+<h4>模态对话框内容</h4>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="../common/plugin/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../common/plugin/bootstrap-dialog/js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#modal1').click(function(){
+            BootstrapDialog.show({
+            title: '新增',
+            message:$('<div></div>').load('dialog.html'),
+            buttons: [{
+                label: '添加',
+                cssClass: 'btn-primary',
+                action: function (dialog) {
+                    BootstrapDialog.show({
+                        title: '选择部门',
+                        message: 'Hi Apple!'
+                    });
+
+                }
+            }, {
+                label: '关闭',
+                cssClass: 'btn-danger',
+                action: function (dialog) {
+                    dialog.close();
+                }
+            }]
+        });
+    });
+
+
+    })
+</script>
+</body>
+</html>

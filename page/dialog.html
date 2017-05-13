@@ -1,0 +1,62 @@
+<form class="form-horizontal" role="form">
+    <div class="form-group"><label class="col-sm-2 control-label" for="username">用户名</label>
+        <div class="col-sm-4"><input class="form-control" name="username" type="text" placeholder="请输入用户名"/></div>
+        <label class="col-sm-2 control-label" for="password">密码</label>
+        <div class="col-sm-4"><input class="form-control" name="password" type="password" placeholder="请输入密码"/></div>
+    </div>
+    <div class="form-group"><label class="col-sm-2 control-label" for="">日期</label>
+        <div class="col-sm-4"><input class="form-control" name="date" type="date" placeholder="yyyy-mm-dd"/></div>
+        <label class="col-sm-2 control-label" for="">部门</label>
+        <div class="col-sm-4"><select name="deployment" class="form-control">
+            <option>请选择..</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>梨</option>
+            <option>苹果</option>
+            <option>苹果</option>
+            <option>苹果</option>
+        </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label col-sm-2">兴趣</label>
+        <div class="col-sm-4"><input type="text" class="form-control" id="inst" ></div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label col-sm-2"></label>
+        <div class="col-sm-4"><input type="button" class="btn btn-default" id="inst1" value="新增"></div>
+    </div>
+</form>
+<script type="text/javascript">
+    $(function () {
+        $('#inst').focus(function () {
+            BootstrapDialog.show({
+                title: '选择部门',
+                message: $('<div></div>').load('dialog2.html'),
+                buttons: [{
+                    label: '确定',
+                    cssClass: 'btn-primary',
+                    action: function (dialog) {
+                        dialog.close();
+                       $('#inst').val(($('#deployment').val())) ;
+                    }
+                }, {
+                    label: '关闭',
+                    cssClass: 'btn-danger',
+                    action: function (dialog) {
+                        dialog.close();
+                    }
+                }]
+            });
+        })
+    })
+</script>

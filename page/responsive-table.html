@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>bootstrap对话框</title>
+    <link rel="stylesheet" href="../common/plugin/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/plugin/basictable/css/style.css">
+    <link rel="stylesheet" href="../common/plugin/basictable/css/basictable.css">
+    <style type="text/css">
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <table   id="t1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>密码</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>admin</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>admin</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>admin</td>
+                <td>123</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="../common/plugin/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../common/plugin/basictable/js/jquery.basictable.min.js"></script>
+<script>
+    $(function(){
+        $('#t1').basictable({
+            breakpoint: 768
+        });
+    });
+</script>
+</body>
+</html>
