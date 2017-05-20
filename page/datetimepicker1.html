@@ -7,9 +7,21 @@
 </head>
 <body>
 <div id="datetimepicker" class="input-append date">
-    <input type="text"></input>
+    <input type="text" ></input>
     <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+        <i  data-date-icon="icon-calendar"></i>
+      </span>
+</div>
+<div id="datetimepicker1" class="input-append date">
+    <input type="text" ></input>
+    <span class="add-on">
+        <i  data-date-icon="icon-calendar"></i>
+      </span>
+</div>
+<div id="datetimepicker2" class="input-append date">
+    <input type="text" ></input>
+    <span class="add-on">
+        <i  data-date-icon="icon-calendar"></i>
       </span>
 </div>
 <script type="text/javascript"
@@ -19,19 +31,49 @@
         src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
 </script>
 <script type="text/javascript"
-        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js" charset="UTF-8">
 </script>
+<script type="text/javascript" src="../common/plugin/bootstrap-datetimepicker2/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script type="text/javascript">
     $('#datetimepicker').datetimepicker({
         format: 'MM/dd/yyyy hh:mm',
-        language: 'en',
+        language: 'zh-CN',
         pickDate: true,
-        pickTime: true,
+        pickTime: false,
         hourStep: 1,
         minuteStep: 15,
         secondStep: 30,
         inputMask: true
     });
+    $('#datetimepicker').on('changeDate', function(e) {
+        console.log(e.date.toString());
+        console.log(e.localDate.toString());
+    });
+
+
+    var nowTemp = new Date();
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+    var checkin = $('#datetimepicker1').datetimepicker({
+        onRender: function (date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        }
+    }).on('changeDate', function(ev) {
+        if (ev.date.valueOf() > checkout.date.valueOf()) {
+            var newDate = new Date(ev.date)
+            newDate.setDate(newDate.getDate() + 1);
+            checkout.setValue(newDate);
+        }
+        checkin.hide();
+        $('#datetimepicker2')[0].focus();
+    }).data('datetimepicker');
+    var checkout = $('#datetimepicker2').datetimepicker({
+        onRender: function(date) {
+            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+        }
+    }).on('changeDate', function(ev) {
+        checkout.hide();
+    }).data('datetimepicker');
 </script>
 </body>
 <html>

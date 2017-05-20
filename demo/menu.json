@@ -1,0 +1,10 @@
+{
+	"text":"菜单1",
+	"href":"#",
+	"icon":" fa fa-cogs fa-lg",
+	"children":[{
+		"text":"菜单2",
+		"href":"123",
+		"icon":" fa fa-bars fa-lg",
+	}]
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>MetisMenu传递Json</title>
+    <link rel="stylesheet" type="text/css" href="../common/plugin/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/plugin/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../common/plugin/sidebarMenu/css/metisMenu.css">
+    <link rel="stylesheet" href="../common/plugin/sidebarMenu/css/demo.css">
+    <link rel="stylesheet" href="../common/plugin/sidebarMenu/css/mm-vertical.css">
+    <!--<link rel="stylesheet" href="../common/plugin/sidebarMenu/css/mm-vertical-hover.css">-->
+    <style type="text/css">
+    </style>
+</head>
+<body>
+<div class="col-md-3">
+<nav class="sidebar-nav">
+    <ul class="metismenu" id="menu1"></ul>
+</nav>
+</div>
+<script type="text/javascript" src="../common/plugin/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../common/plugin/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/plugin/sidebarMenu/js/metisMenu.js"></script>
+<script type="text/javascript" src="../common/plugin/scroll/jquery.nicescroll.min.js"></script>
+<script>
+    $(function () {
+        var menu2 = [{"id":"1","name":"主菜单","parentId":"0","url":"","icon":"","order":"1","isHeader":"1","children":[
+            {"id":"3","name":"商品管理","parentId":"1","url":"","icon":"","order":"1","isHeader":"0","children":[
+                {"id":"4","name":"品牌管理","parentId":"3","url":"test1.html","icon":"","order":"1","isHeader":"0","children":""},
+                {"id":"5","name":"分类管理","parentId":"3","url":"test2.html","icon":"","order":"1","isHeader":"0","children":""}
+            ]},
+            {"id":"6","name":"订单管理","parentId":"1","url":"","icon":"","order":"1","isHeader":"0","children":[
+                {"id":"7","name":"已付款","parentId":"6","url":"home3.html","icon":"","order":"1","isHeader":"0","children":""},
+                {"id":"8","name":"未付款","parentId":"6","url":"home4.html","icon":"","order":"1","isHeader":"0","children":""}
+            ]}
+        ]},
+
+            {"id":"24","name":"框架案例1","parentId":"0","url":"","icon":"","order":"2","isHeader":"1","children":[
+                {"id":"25","name":"新功能","parentId":"24","url":"","icon":"","order":"1","isHeader":"0","children":""},
+
+            ]}
+        ];
+
+//
+        /*循环菜单*/
+        function initMenu(menu,parent){
+            for(var i=0; i<menu.length; i++){
+                var item = menu[i];
+                var str = "";
+                try{
+//                    if(item.isHeader == "1"){
+//                        str = "<li class='menu-header'>"+item.name+"</li>";
+//                        $(parent).append(str);
+//                        if(item.children != ""){
+//                            initMenu(item.children,parent);
+//                        }
+//                    }else{
+//                        item.icon == "" ? item.icon = "fa fa-folder-o" : item.icon = item.icon;
+                        if(item.children == ""){
+                            str = "<li><a href='"+item.url+"'  aria-expanded='false'><span class='"+item.icon+"'></span>&nbsp;"+item.name+"</a></li>";
+                            $(parent).append(str);
+                        }else{
+                            str = "<li><a href='"+item.url+"' class='has-arrow' aria-expanded='false'><span class='"+item.icon+"'></span>&nbsp;"+item.name+"</a>";
+                            str +="<ul aria-expanded='false' id='menu-child-"+item.id+"'></ul></li>";
+                            $(parent).append(str);
+                            var childParent = $("#menu-child-"+item.id);
+                            initMenu(item.children,childParent);
+                        }
+//                    }
+                }catch(e){}
+            }
+        }
+        initMenu(menu2,$('#menu1'));
+        $('#menu1').metisMenu();
+    })
+</script>
+</body>
+</html>

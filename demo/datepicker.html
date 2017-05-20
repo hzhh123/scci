@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日期</title>
+    <link rel="stylesheet" href="../common/plugin/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../common/plugin/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+</head>
+<body>
+<div class="row">
+    <div class='col-sm-3 pull-right'>
+        <div class="form-group">
+            <label>选择日期：</label>
+            <div class='input-group date' id='datetimepicker1'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../common/plugin/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../common/plugin/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../common/plugin/moment/min/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="../common/plugin/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn'),
+        })
+        $('#datetimepicker1').on('dp.change',function (e) {
+            alert(e.date);
+            alert(e.oldDate);
+        })
+    })
+</script>
+</body>
+</html>

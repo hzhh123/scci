@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-12">
+        <label>换肤</label>
+        <hr style="margin-top: 0;">
+        <input type="radio" checked name="theme"> 默认
+        <input type="radio" name="theme"> 紫色
+        <input type="radio" name="theme"> 黄色
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('input[type=radio]').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%'
+        });
+    })
+</script>

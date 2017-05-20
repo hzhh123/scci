@@ -1,0 +1,75 @@
+<div id="selectTitle" class="list-select">
+    <div class="list-title">
+        <h4>想吃什么水果呢。。。</h4>
+    </div>
+    <div class="list-body">
+        <div class="item-box left-box">
+            <!-- 左边框初始化待选项 -->
+            <span class="item" data-id="xigua">西瓜</span>
+            <span class="item" data-id="pingguo">苹果</span>
+            <span class="item" data-id="xiangjiao">香蕉</span>
+            <span class="item" data-id="boluo">菠萝</span>
+            <span class="item" data-id="caomei">草莓</span>
+            <span class="item" data-id="yali">鸭梨</span>
+            <span class="item" data-id="mitao">蜜桃</span>
+            <span class="item" data-id="sangguo">桑果</span>
+            <span class="item" data-id="yangmei">杨梅</span>
+            <span class="item" data-id="putao">葡萄</span>
+        </div>
+        <div class="center-box">
+            <button class="add-one" title="添加选中项">></button>
+            <button class="add-all" title="添加全部">>></button>
+            <button class="remove-one" title="移除选中项"><</button>
+            <button class="remove-all" title="移除全部"><<</button>
+        </div>
+        <div class="item-box right-box">
+            <!-- 右边框存放已选项 -->
+        </div>
+    </div>
+</div>
+<script>
+    var ned={
+        /**
+         * 获取选择的值
+         * @return json数组
+         */
+        getSelectedValue:function(){
+        var rightBox = $('#selectTitle').find('.list-body .right-box');
+        var itemValues = [];
+        var itemValue;
+
+        rightBox.find('.item').each(function(){
+            itemValue = {};
+            itemValue[$(this).attr('data-id')] = $(this).text();
+            itemValues.push(itemValue);
+        });
+
+        for(var i = 0; i < itemValues.length; i++){
+            console.log(itemValues[i]);
+        }
+
+        return itemValues;
+    },
+        //传递ids数组
+         getSelectedValueIds:function(){
+        var rightBox = $('#selectTitle').find('.list-body .right-box');
+        var itemValues = "";
+        var itemValue;
+
+        rightBox.find('.item').each(function(){
+            itemValue = $(this).attr('data-id');
+            itemValues+=itemValue+",";
+        });
+
+        itemValues=itemValues.substr(0,itemValues.length-1);
+        return itemValues;
+     }
+    }
+
+    $(function(){
+        $('#selectTitle').initList();
+
+
+
+    })
+</script>

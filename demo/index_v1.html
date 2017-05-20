@@ -12,6 +12,9 @@
     <link rel="stylesheet" type="text/css" href="../common/plugin/sidebarMenu/css/metisMenu.css">
     <link rel="stylesheet" href="../common/plugin/sidebarMenu/css/demo.css">
     <link rel="stylesheet" href="../common/plugin/sidebarMenu/css/mm-vertical.css">
+    <link rel="stylesheet" href="../common/plugin/bootstrap-dialog/css/bootstrap-dialog.min.css">
+    <link href="../common/plugin/icheck/skins/all.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
     <!--<link rel="stylesheet" href="../common/plugin/sidebarMenu/css/mm-vertical-hover.css">-->
     <style type="text/css">
         body{
@@ -28,7 +31,7 @@
         .navbar{
             border-radius: 0;
             margin:0 0 0 220px;
-            z-index: 999;
+            z-index: 1000;
         }
         @media (max-width: 768px) {
             .navbar{
@@ -45,6 +48,7 @@
                 border:1px dotted #ccc;
                 border-left:0;
                 padding:5px;
+                z-index: 999;
             }
             .sidebar-toggle i{
                   color: #ccc;
@@ -54,6 +58,13 @@
             }
             .navbar-brand{
                 display: block;
+            }
+            .menu-head{
+                display: none;
+            }
+            .content{
+                margin-left: 0px;
+                margin-top: 50px;
             }
 
         }
@@ -69,6 +80,47 @@
             .navbar-brand{
                  display: none;
              }
+            .sidebar{
+                margin-top: 200px;
+            }
+            .menu-head{
+                display: block;
+                background: #212529;
+                position: fixed;
+                left:0;
+                top:0;
+                width:220px;
+                height: 200px;
+                margin:0;
+            }
+            .menu-brand{
+                height: 50px;
+                background: greenyellow;
+            }
+            .sidebar{
+                border-top: 1px solid #333;
+            }
+            .content{
+               margin-left: 220px;
+                margin-top: 50px;
+            }
+        }
+        .person-img{
+            position: relative;
+            text-align: center;
+            margin-top:5px;
+        }
+        .person-info{
+            text-align: center;
+        }
+        .person-info a{
+            margin:5px;
+        }
+        .color-danger{
+            color: #d9534f;
+        }
+        .color-warning{
+            color: #ec971f;
         }
     </style>
 </head>
@@ -84,7 +136,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand">
-                <span>Title</span>
+                <img src="logo.png" style="height: 40px;position: absolute;top:5px">
             </a>
         </div>
 
@@ -111,6 +163,7 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
+                <li><a href="#"><i class="fa fa-remove"></i></a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>
@@ -118,109 +171,150 @@
 <div class="sidebar-toggle">
     <a href="javascript;"><i class="fa fa-angle-right fa-2x"></i></a>
 </div>
+<div class="menu-head">
+    <div class="menu-brand">
+        <img src="logo.png" style="height: 40px;position: absolute;top:5px;left:50px;">
+    </div>
+    <div class="menu-penson">
+        <div class="person-img">
+            <a href="#"><img src="person.png" width="100" height="100" alt=""></a>
+        </div>
+        <div class="person-info">
+            <a href="#">超级管理员</a><br>
+            <a href="#"><i class="fa fa-user color-warning"></i></a>
+            <a href="#"><i class="fa fa-lock"></i></a>
+            <a href="#"><i class="fa fa-edit color-danger"></i></a>
+            <a href="#" id="setting"><i class="fa fa-cog color-warning"></i></a>
+        </div>
+    </div>
+</div>
 <div class="sidebar">
 <aside>
     <nav class="sidebar-nav">
         <ul class="metismenu" id="menu1">
-            <li>
-                <a class="has-arrow" href="#">
-                    <span class="fa fa-fw fa-github fa-lg"></span>
-                    metisMenu
-                </a>
-                <ul aria-expanded="true">
-                    <li>
-                        <a href="https://github.com/onokumus/metisMenu">
-                            <span class="fa fa-fw fa-code-fork"></span> Fork
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/onokumus/metisMenu">
-                            <span class="fa fa-fw fa-star"></span> Star
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/onokumus/metisMenu/issues">
-                            <span class="fa fa-fw fa-exclamation-triangle"></span> Issues
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="#" aria-expanded="false">Menu 0</a>
-                <ul aria-expanded="false">
-                    <li><a href="#">item 0.1</a></li>
-                    <li><a href="#">item 0.2</a></li>
-                    <li><a href="http://onokumus.com">onokumus</a></li>
-                    <li><a href="#">item 0.4</a></li>
-                </ul>
-            </li>
-            <li id="removable">
-                <a class="has-arrow" href="#" aria-expanded="false">Menu 1</a>
-                <ul aria-expanded="false">
-                    <li><a href="#">item 1.1</a></li>
-                    <li><a href="#">item 1.2</a></li>
-                    <li>
-                        <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                        <ul aria-expanded="false">
-                            <li><a href="#">item 1.3.1</a></li>
-                            <li><a href="#">item 1.3.2</a></li>
-                            <li><a href="#">item 1.3.3</a></li>
-                            <li><a href="#">item 1.3.4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">item 1.4</a></li>
-                    <li>
-                        <a class="has-arrow" href="#" aria-expanded="false">Menu 1.5</a>
-                        <ul aria-expanded="false">
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="#" aria-expanded="false">Menu 2</a>
-                <ul aria-expanded="false">
-                    <li><a href="#">item 2.1</a></li>
-                    <li><a href="#">item 2.2</a></li>
-                    <li><a href="#">item 2.3</a></li>
-                    <li><a href="#">item 2.4</a></li>
-                </ul>
-            </li>
+            <!--<li>-->
+                <!--<a class="has-arrow" href="#">-->
+                    <!--<span class="fa fa-fw fa-github fa-lg"></span>-->
+                    <!--metisMenu-->
+                <!--</a>-->
+                <!--<ul aria-expanded="true">-->
+                    <!--<li>-->
+                        <!--<a href="https://github.com/onokumus/metisMenu">-->
+                            <!--<span class="fa fa-fw fa-code-fork"></span> Fork-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="https://github.com/onokumus/metisMenu">-->
+                            <!--<span class="fa fa-fw fa-star"></span> Star-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="https://github.com/onokumus/metisMenu/issues">-->
+                            <!--<span class="fa fa-fw fa-exclamation-triangle"></span> Issues-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a class="has-arrow" href="" aria-expanded="false">Menu 0</a>-->
+                <!--<ul aria-expanded="false">-->
+                    <!--<li><a href="#">item 0.1</a></li>-->
+                    <!--<li><a href="#">item 0.2</a></li>-->
+                    <!--<li><a href="http://onokumus.com">onokumus</a></li>-->
+                    <!--<li><a href="#">item 0.4</a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <!--<li id="removable">-->
+                <!--<a class="has-arrow" href="" aria-expanded="false">Menu 1</a>-->
+                <!--<ul aria-expanded="false">-->
+                    <!--<li><a href="demo1.html"><span>item 1.1</span></a></li>-->
+                    <!--<li><a href="#">item 1.2</a></li>-->
+                    <!--<li>-->
+                        <!--<a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>-->
+                        <!--<ul aria-expanded="false">-->
+                            <!--<li><a href="#">item 1.3.1</a></li>-->
+                            <!--<li><a href="#">item 1.3.2</a></li>-->
+                            <!--<li><a href="#">item 1.3.3</a></li>-->
+                            <!--<li><a href="#">item 1.3.4</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li><a href="#">item 1.4</a></li>-->
+                    <!--<li>-->
+                        <!--<a class="has-arrow" href="#" aria-expanded="false">Menu 1.5</a>-->
+                        <!--<ul aria-expanded="false">-->
+                            <!--<li><a href="#">item 1.5.1</a></li>-->
+                            <!--<li><a href="#">item 1.5.2</a></li>-->
+                            <!--<li><a href="#">item 1.5.3</a></li>-->
+                            <!--<li><a href="#">item 1.5.4</a></li>-->
+                            <!--<li><a href="#">item 1.5.1</a></li>-->
+                            <!--<li><a href="#">item 1.5.2</a></li>-->
+                            <!--<li><a href="#">item 1.5.3</a></li>-->
+                            <!--<li><a href="#">item 1.5.4</a></li>-->
+                            <!--<li><a href="#">item 1.5.1</a></li>-->
+                            <!--<li><a href="#">item 1.5.2</a></li>-->
+                            <!--<li><a href="#">item 1.5.3</a></li>-->
+                            <!--<li><a href="#">item 1.5.4</a></li>-->
+                            <!--<li><a href="#">item 1.5.1</a></li>-->
+                            <!--<li><a href="#">item 1.5.2</a></li>-->
+                            <!--<li><a href="#">item 1.5.3</a></li>-->
+                            <!--<li><a href="#">item 1.5.4</a></li>-->
+                            <!--<li><a href="#">item 1.5.1</a></li>-->
+                            <!--<li><a href="#">item 1.5.2</a></li>-->
+                            <!--<li><a href="#">item 1.5.3</a></li>-->
+                            <!--<li><a href="#">item 1.5.4</a></li>-->
+                            <!--<li><a href="#">item 1.5.1</a></li>-->
+                            <!--<li><a href="#">item 1.5.2</a></li>-->
+                            <!--<li><a href="#">item 1.5.3</a></li>-->
+                            <!--<li><a href="#">item 1.5.4</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a class="has-arrow" href="#" aria-expanded="false">Menu 2</a>-->
+                <!--<ul aria-expanded="false">-->
+                    <!--<li><a href="#">item 2.1</a></li>-->
+                    <!--<li><a href="#">item 2.2</a></li>-->
+                    <!--<li><a href="#">item 2.3</a></li>-->
+                    <!--<li><a href="#">item 2.4</a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
         </ul>
     </nav>
 </aside>
+</div>
+<div class="content">
+    <section class="layout-main"  >
+        <div class="layout-main-tab">
+            <button class="tab-btn btn-left"><i class="fa fa-backward"></i></button>
+            <nav class="tab-nav">
+                <div class="tab-nav-content">
+                    <a href="javascript:;" class="content-tab active" data-id="home.html">首页</a>
+                </div>
+            </nav>
+            <button class="tab-btn btn-right"><i class="fa fa-forward"></i></button>
+        </div>
+        <div class="layout-main-body" >
+            <iframe class="body-iframe" name="iframe0" width="100%" height="100%" src="home.html" frameborder="0" data-id="home.html" seamless></iframe>
+        </div>
+    </section>
 </div>
 <script type="text/javascript" src="../common/plugin/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="../common/plugin/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../common/plugin/sidebarMenu/js/metisMenu.js"></script>
 <script type="text/javascript" src="../common/plugin/scroll/jquery.nicescroll.min.js"></script>
+<script src="../common/plugin/bootstrap-dialog/js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="../common/plugin/icheck/icheck.js"></script>
+<script type="text/javascript" src="style.js"></script>
+
 <script>
     $(function () {
-        $('.sidebar').height($(window).height());
-        $('#menu1').metisMenu();
+        if($(window).width()>768){
+            $('.sidebar').height($(window).height()-$('.menu-head').height());
+        }else {
+            $('.sidebar').height($(window).height());
+        }
+//        $('#menu1').metisMenu();
         //设置侧边栏滚动条
         $(".sidebar").niceScroll({
             cursorcolor:"#393d49",
@@ -232,16 +326,22 @@
         });
 
         $(window).resize(function () {
-            $('.sidebar').height($(window).height());
             if($(window).width()>768){
+                $('.sidebar').height($(window).height()-$('.menu-head').height());
                 $('.navbar').animate({marginLeft:220});
                 $('.sidebar').animate({marginLeft:0});
+                $('.menu-head').animate({marginLeft:0});
                 sidebartoggle();
+                $('.layout-main').animate({left:220});
             }else{
+                $('.sidebar').height($(window).height());
                 $('.navbar').animate({marginLeft:0});
+                $('.content').animate({marginLeft:0});
                 $('.sidebar').animate({marginLeft:-220});
+                $('.menu-head').animate({marginLeft:-220});
                 $('.sidebar-toggle').animate({marginLeft:0});
                 $('.sidebar-toggle i').removeClass('fa-angle-left').addClass('fa-angle-right');
+                $('.layout-main').animate({left:0});
 
             }
 
@@ -251,10 +351,13 @@
         $('.sidebar-toggle i').click(function () {
             if($(this).hasClass('fa-angle-right')){
                 $('.sidebar').animate({marginLeft:0});
+               // $('.content').animate({marginLeft:0});
+               $('.menu-head').animate({marginLeft:0});
                 $(this).removeClass('fa-angle-right').addClass('fa-angle-left');
                 $('.sidebar-toggle').animate({marginLeft:220});
             }else{
-                $('.sidebar').animate({marginLeft:-250});
+                $('.sidebar').animate({marginLeft:-220});
+                $('.menu-head').animate({marginLeft:-220});
                 $(this).removeClass('fa-angle-left').addClass('fa-angle-right');
                 $('.sidebar-toggle').animate({marginLeft:0});
             }
@@ -267,16 +370,47 @@
                 var marginLeft=$('.sidebar').css('margin-left').replace('px','');
                 if(marginLeft==0){
                     $('.sidebar').animate({marginLeft:-220});
+                    $('.menu-head').animate({marginLeft:-220});
                     $('.navbar').animate({marginLeft:0});
+                    $('.content').animate({marginLeft:0});
+                    $('.layout-main').animate({left:0});
                 }else{
                     $('.sidebar').animate({marginLeft:0});
+                    $('.menu-head').animate({marginLeft:0});
+                    $('.layout-main').animate({left:220});
+
                     $('.navbar').animate({marginLeft:220});
+                    $('.content').animate({marginLeft:220});
                 }
 
             })
         }
         }
         sidebartoggle();
+
+        $('#setting').click(function(){
+            BootstrapDialog.show({
+                title: '设置',
+                message:$('<div></div>').load('setting.html'),
+                buttons: [{
+                    label: '确认',
+                    cssClass: 'btn-primary',
+                    action: function (dialog) {
+                        BootstrapDialog.show({
+                            title: '选择部门',
+                            message: 'Hi Apple!'
+                        });
+
+                    }
+                }, {
+                    label: '关闭',
+                    cssClass: 'btn-danger',
+                    action: function (dialog) {
+                        dialog.close();
+                    }
+                }]
+            });
+        });
 
     });
 </script>
